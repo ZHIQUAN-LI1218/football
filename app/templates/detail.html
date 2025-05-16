@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Match Detail{% endblock %}
+{% block content %}
+<h2>{{ match.home_team }} vs {{ match.away_team }} ({{ match.date }})</h2>
+<p>Score: {{ match.home_score }} - {{ match.away_score }}</p>
+<p>Location: {{ match.match_city }}, {{ match.match_country }}</p>
+<p>Tournament: {{ match.tournament.name }}</p>
+
+<h3>Goal Scorers</h3>
+<ul>
+    {% for goal in goals %}
+        <li>{{ goal.minute }}' - {{ goal.team_scored }} - {{ goal.scorer }}</li>
+    {% else %}
+        <li>No goals recorded.</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('main.index') }}">← Back to all matches</a>
+{% endblock %}
