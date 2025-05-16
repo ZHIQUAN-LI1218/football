@@ -29,7 +29,6 @@ def create_db():
             df = pd.read_excel('data/data.xlsx')
             for _, row in df.iterrows():
                 match = Match(
-                    id=row['match_id'],
                     home_team=row['home_team'],
                     away_team=row['away_team'],
                     home_score=row['home_score'],
@@ -43,7 +42,6 @@ def create_db():
                 db.session.flush()
                 
                 goalScorer = GoalScorer(
-                    id=row['match_id'],
                     home_team=row['home_team'],
                     away_team=row['away_team'],
                     team_scored=row['team_scored'],
